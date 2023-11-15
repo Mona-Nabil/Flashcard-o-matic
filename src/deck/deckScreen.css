@@ -1,0 +1,33 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.card {
+  margin-top: 20px;
+}
+
+.breadcrumb {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.card-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.card-buttons i {
+  margin-right: 5px;
+}
+
+.table th,
+.table td {
+  text-align: center;
+}
+
+.btn-card {
+  padding: 5px 10px;
+  font-size: 14px;
+}
