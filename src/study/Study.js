@@ -50,15 +50,16 @@ function Study() {
     setIsFrontOfCard(!isFrontCard);
   };
   const currentCard = deck.cards[currentCardidx];
-
+  console.log(currentCardidx, currentCard);
   const currentSideDescription = isFrontCard ? (
     <div>
-      <h5 className="card-text">{currentCardidx.front}</h5>
+      <h5 className="card-text">{currentCard.front}</h5>
     </div>
   ) : (
-    <h5 className="card-text">{currentCardidx.back}</h5>
+    <h5 className="card-text">{currentCard.back}</h5>
   );
-
+    
+   
   const cardContent = currentCard ? (
     <div>
       <h6 className="card-title font-weight-bold">
@@ -75,7 +76,7 @@ function Study() {
   ) : (
     <p>Loading...</p>
   );
-
+   
   const breadcrumb = (
     <nav aria-label="breadcrumb">
       <ol className="breadcrumb">
@@ -105,7 +106,7 @@ function Study() {
         </Link>
       </div>
     ) : null;
-
+       
   return (
     <div>
       {breadcrumb}
