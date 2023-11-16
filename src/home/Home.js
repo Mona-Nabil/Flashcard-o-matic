@@ -6,7 +6,7 @@ import "./Home.css";
 function Home() {
   return (
     <div>
-      <Link to="/create-deck" className="btn btn-secondary btn-lg">
+      <Link to="/decks/new" className="btn btn-secondary btn-lg">
         + Create Deck
       </Link>
 
