@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import DeckDetail from "./DeckDetail";
-import Study from "../study/Study";
-import DeckScreen from "./DeckScreen";
+
 import { listDecks } from "../utils/api";
 
 function DeckList() {
@@ -14,7 +13,7 @@ function DeckList() {
     }
     getAllDecks();
   }, []);
-  
+
   return (
     <div>
       {decks.map((deck) => (

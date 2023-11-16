@@ -2,7 +2,6 @@ import React from "react";
 import {
   RiBookLine,
   RiDeleteBin6Line,
-  RiEye2Line,
   RiEyeLine,
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
