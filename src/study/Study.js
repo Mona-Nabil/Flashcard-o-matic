@@ -50,7 +50,7 @@ function Study() {
     setIsFrontOfCard(!isFrontCard);
   };
   const currentCard = deck.cards[currentCardidx];
-  console.log(currentCardidx, currentCard);
+ 
   const currentSideDescription = isFrontCard ? (
     <div>
       <h5 className="card-text">{currentCard.front}</h5>

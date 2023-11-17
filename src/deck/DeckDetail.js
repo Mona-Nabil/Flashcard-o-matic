@@ -5,8 +5,18 @@ import {
   RiEyeLine,
 } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import { deleteDeck } from "../utils/api";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function DeckDetail({ deck }) {
+  const history = useHistory()
+  const handleTrashClick = () => {
+    if (
+      window.confirm("Delete this deck? You will not be able to recover it.")
+    ) {
+      deleteDeck(deck.id).then(() => history.push("/"));
+    }
+  };
   return (
     <div>
       <div className="deck-card card mt-2" key={deck.id}>
@@ -34,7 +44,9 @@ function DeckDetail({ deck }) {
               </Link>
             </div>
             <div>
-              <button className="btn btn-danger">
+              <button 
+              onClick={handleTrashClick}
+              className="btn btn-danger">
                 <RiDeleteBin6Line />
                 
               </button>

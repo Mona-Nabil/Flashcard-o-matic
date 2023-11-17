@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { deleteDeck, readDeck } from "../utils/api/index";
+import { deleteCard, deleteDeck, readDeck } from "../utils/api/index";
 import { useHistory, useParams, Link } from "react-router-dom";
 import "./deckScreen.css";
 import {
@@ -33,6 +33,20 @@ function DeckScreen() {
       deleteDeck(deckId).then(() => history.push("/"));
     }
   };
+  const handleTrashCardClick = (cardId) => {
+    if (
+      window.confirm("Delete this card? You will not be able to recover it.")
+    ) {
+      deleteCard(cardId).then(() => {
+        // Refresh the deck data after deleting the card
+        readDeck(deckId).then((deckData) => {
+          setCards(deckData.cards);
+          setDeck(deckData);
+        });
+      });
+    }
+  };
+
   return (
     <div className="container mt-4">
       <nav aria-label="breadcrumb">
@@ -58,7 +72,7 @@ function DeckScreen() {
                 to={`/decks/${deck.id}/edit`}
                 className="btn btn-secondary mr-2"
               >
-                {/* <i className="breadcrumb-item active" aria-current="page"></i> */}
+               
                 <RiPencilLine />
                 Edit
               </Link>
@@ -66,7 +80,7 @@ function DeckScreen() {
                 to={`/decks/${deck.id}/study`}
                 className="btn btn-primary mr-2"
               >
-                {/* <i className="bi bi-book"></i> */}
+                
                 <RiBook2Line /> Study
               </Link>
 
@@ -74,7 +88,7 @@ function DeckScreen() {
                 to={`/decks/${deck.id}/cards/new`}
                 className="btn btn-primary mr-2"
               >
-                {/* <i className="bi bi-plus"></i>  */}
+               
                 <RiMenuAddLine />
                 Add Cards
               </Link>
@@ -84,7 +98,6 @@ function DeckScreen() {
                 className="btn btn-danger btn-small"
                 onClick={handleTrashClick}
               >
-                {/* <i className="fa fa-trash"></i> */}
                 <RiDeleteBinLine /> Delete
               </button>
             </div>
@@ -102,14 +115,17 @@ function DeckScreen() {
               <td className="card-buttons-container">
                 <div className="card-buttons">
                   <Link
-                    to={`/decks/${deck.id}/edit`}
+                    to={`/decks/${deck.id}/cards/${card.id}/edit`}
                     className="btn btn-secondary mr-2"
                     style={{ whiteSpace: "nowrap" }}
                   >
                     <RiPencilLine /> Edit
                   </Link>
 
-                  <button className="btn btn-danger" onClick={handleTrashClick}>
+                  <button
+                    className="btn btn-danger"
+                    onClick={() => handleTrashCardClick(card.id)}
+                  >
                     <i className="fa fa-trash"></i>
                   </button>
                 </div>
