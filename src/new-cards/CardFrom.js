@@ -9,6 +9,7 @@ function CardFrom({fronOfCard, backOfCard, handleBackOfCardChange, handleFrontOf
             Front
           </label>
           <textarea
+            
             type="text"
             id="cardFront"
             name="cardFront"

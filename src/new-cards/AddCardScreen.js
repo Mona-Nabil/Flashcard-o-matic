@@ -59,7 +59,7 @@ function AddCardScreen() {
         <div className="card-body">
           <h2>{deck.name}: Add Card</h2>
 
-          <CardFrom fronOfCard={fronOfCard} backOfCard={backOfCard}/>
+          <CardFrom fronOfCard={fronOfCard} backOfCard={backOfCard} handleFrontOfCardChange={handleFrontOfCardChange} handleBackOfCardChange={handleBackOfCardChange}/>
           <div className="d-flex justify-content">
             <button
               type="button"
